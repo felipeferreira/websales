@@ -15,7 +15,9 @@ class UserSessionsController < ApplicationController
       end
       flash[:success] = msg
       redirect_back_or_default dashboard_index_path
-    else
+      #redirect_back_or_default ticket_index_path
+    
+else
       if @user_session.being_brute_force_protected?
         flash[:error] = "User is locked: exceeded failed login limit!"
       else

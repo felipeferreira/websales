@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :attachments
   has_many :alerts, :dependent => :destroy
   has_many :alert_tickets, :through => :alerts, :class_name => 'Ticket', :source => :ticket
+  has_many :clientes
+  has_many :pedidos
 
   # Validations
   validates_presence_of     :first_name, :last_name

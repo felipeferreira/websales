@@ -16,8 +16,8 @@
   </p>
 
   <p>
-  <%= f.label :contact_id_equals, "Contact" %>
-  <%= f.collection_select :contact_id_equals, Contact.all(:order => "last_name"), :id, :full_name, { :include_blank => true}, { :class => "selectbox" } %>
+  <%= f.label :cliente_id_equals, "Contact" %>
+  <%= f.collection_select :cliente_id_equals, Cliente.all(:order => "nomefantasia"), :id, :nomefantasia, { :include_blank => true}, { :class => "selectbox" } %>
   </p>
 
   <p>

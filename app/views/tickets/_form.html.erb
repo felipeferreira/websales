@@ -5,9 +5,9 @@
 <dt><label for="ticket_title">Title</label></dt>
 <dd><%= f.text_field :title, {:style => "width: 440px", :class => "textfield" } -%></dd>
 
-<dt><label for="ticket_contact_id">Contact</label></dt>
-<%#= select 'ticket', 'contact_id', Contact.find(:all).collect {|c| [ c.full_name, c.id ] }, {}, { :style => "width: 130px", :class => "selectbox" } -%>
-<dd><%= f.collection_select :contact_id, @contact_select, :id, :full_name, { :include_blank => true }, { :class => "selectbox" } -%></dd>
+<dt><label for="ticket_cliente_id">Cliente</label></dt>
+<%#= select 'ticket', 'cliente_id', Cliente.find(:all).collect {|c| [ c.cliente, c.id ] }, {}, { :style => "width: 130px", :class => "selectbox" } -%>
+<dd><%= f.collection_select :cliente_id, @cliente_select, :id, :nomefantasia, { :include_blank => true }, { :class => "selectbox" } -%></dd>
 
 <dt><label for="ticket_group_id">Group</label></dt>
 <%#= select 'ticket','group_id',Group.find(:all).collect {|g| [ g.group, g.id ] }, {}, :class => "selectbox" -%>
@@ -22,8 +22,7 @@
 <dd><%= f.collection_select :priority_id, @priority_select, :id, :name, { :include_blank => true }, { :class => "selectbox" } -%></dd>
 
 <dt><label for="ticket_owned_by">Owner</label></dt>
-<%#= select 'ticket','owned_by',User.find(:all).collect {|u| [ u.username, u.id ] }, { :include_blank => true }, { :style => "width: 130px", :class => "selectbox" } -%>
-<dd><%= f.collection_select :owned_by, @owner_select, :id, :username, { :include_blank => true }, { :class => "selectbox" } -%></dd>
+<dd><%= f.text_field :owned_by -%></dd>
 
 <dt><label for="ticket_details">Details</label></dt>
 <dd><%= f.text_area :details, :size => "70x6", :class => "textarea" -%></dd>

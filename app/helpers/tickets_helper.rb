@@ -7,7 +7,8 @@ module TicketsHelper
     @group_select = Group.enabled(:select => "id, name")
     @status_select = Status.enabled(:select => "id, name")
     @priority_select = Priority.enabled(:select => "id, name")
-    @owner_select = User.enabled(:select => "id, username")
+    #@owner_select = User.enabled(:select => "id, username")
+    @owner_select = @current_user.id
 
     unless ticket.id.blank?
       unless ticket.contact.blank? || ticket.contact.enabled?
@@ -31,6 +32,7 @@ module TicketsHelper
         @owner_select.unshift(disabled_owner)
       end
     end
+    
 
     # build attachment file_field and return ticket
     returning(ticket) do |t|

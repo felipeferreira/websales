@@ -4,12 +4,39 @@
 <head>  
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="description" content="TicketMule support ticket tracking" />
-  <title><%= controller.controller_name.capitalize %> &#8250; TicketMule</title>
+  <title><%= controller.controller_name.capitalize %> &#8250; WebSales</title>
   <%= stylesheet_link_tag 'screen', :media => "screen, projection" %>
   <%= stylesheet_link_tag 'print', :media => "print" %>
   <%= javascript_include_tag 'jquery.min', 'application', :cache => true -%>
+  <%= javascript_include_tag 'maskedinput.js', 'application', :cache => true -%> 
+<%= stylesheet_link_tag 'jquery.suggest.css' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.suggest.js" %>
   <%= yield(:head) -%>
   <link rel="shortcut icon" type="image/ico" href="<%=app_root%>/favicon.ico" />
+<script type="text/javascript">
+function add()
+{
+if($F('cliente_id').length > 0)
+{
+
+pui.add($F('cliente_id'));
+
+}
+}
+</script>
+
+
+
+ <script type="text/javascript">
+  $.noconflict( );
+  jQuery(function($){ 
+        $("#telefone").mask("(999) 9999-9999"); //Aqui montamos a máscara que queremos                
+        $("#cep").mask("99999-999");         
+        $("#cpf").mask("999.999.999/99");                 
+        $("#cliente[cnpj]").mask("99.999.999/9999-99");           
+  });
+</script>
 </head>
 
 <body>
@@ -17,19 +44,24 @@
 
 <div id="header">
   <div id="inner-header">
-    <h1>TicketMule</h1>
-    <p id="status">Signed in as <%= link_to @current_user.username, user_path(@current_user.id) -%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></p>
+    <h1>resupririo</h1>
+    <p id="status">Bem vindo: <%= link_to @current_user.username, user_path(@current_user.id) -%>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></p>
     <div id="nav">
       <!--
       <ul id="nav-left">
         <li><a href="/dashboard" tabindex="1" title="Dashboard"><span>Dashboard</span></a></li>
-        <li><a href="/tickets" tabindex="2" title="Tickets"><span>Tickets</span></a></li>
+        <li><a href="/tickets" tabindex="2" title="Tickets"><span>Pedidos</span></a></li>
+        <li><a href="/find" tabindex="2" title="Find"><span>Find</span></a></li>
+        <li><a href="/clientes" tabindex="2" title="Clientes"><span>Clientes</span></a></li>
+        <li><a href="/contacts" tabindex="2" title="Pedidos"><span>Clientes</span></a></li>
       </ul>
       -->
       <ul id="nav-right">
-        <%= tab_for :dashboard, dashboard_index_path, "Dashboard" %>
-        <%= tab_for :tickets, tickets_path, "Tickets" %>
-        <%= tab_for :contacts, contacts_path, "Contacts" %>
+        <%= tab_for :dashboard, dashboard_index_path, "Painel de Vendas" %>
+        <%= tab_for :pedidos, pedidos_path, "Pedidos" %>
+        <%= tab_for :contacts, contacts_path, "Contacts" %>       
+        <%= tab_for :clientes, clientes_path, "Clientes" %>       
+        <%= tab_for :produtos, produtos_path, "Produtos" %>       
         <%= tab_for :users, users_path, "Users" %>
         <% if @current_user.admin? -%>
           <%= tab_for :admin, admin_index_path, "Admin" %>
@@ -50,11 +82,11 @@
   </div><!-- end left-column -->
   <div id="right-column">
     <%= yield :button_list -%>
-    <h3>Jump to Ticket</h3>
+    <h3>Consulte um pedido</h3>
     <div class="right-container">
       <form id="jumpbox" action="">
         <p>
-          <label for="jump_id"><em>Enter a ticket number:</em></label><br/>
+          <label for="jump_id"><em>Num do pedido:</em></label><br/>
           <input type="text" id="jump_id" size="8" class="textfield"/>
           <input type="hidden" id="app_root" value="<%=app_root%>"/>
           <button class="button">Go</button>
@@ -68,7 +100,7 @@
 <br/><br/></div><!-- end content -->
 
 <div id="footer">
-  <p>Powered by <strong><a href="http://www.appogee.net/">TicketMule</a></strong></p>
+  <p>Powered by <strong><a href="http://www.fluvtech.com/">FluvTechnologies</a></strong></p>
 </div>
 
 </body>

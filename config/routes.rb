@@ -1,16 +1,24 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :item_pedidos
+
+  map.resources :fornecedors
+
+  map.resources :produtos
+
+  map.resources :pedidos
+
   map.root :controller => 'dashboard'
 
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
 
   map.resources :tickets, :has_many => [:comments, :attachments]
-
   map.connect 'tickets/set_tickets_per_page/:per_page', :controller => 'tickets', :action => 'set_tickets_per_page'
 
   map.connect 'attachments/:ticket_id/:id', :controller => 'attachments', :action => 'show', :conditions => { :method => :get }
 
   map.resources :dashboard, :only => :index
+  map.resources :clientes
 
   # users can add themselves
   map.resources :users, :member => { :toggle => :post, :unlock => :post }
@@ -20,6 +28,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :contacts, :member => { :toggle => :post }
 
+  map.resources :pedidos, :member => { :toggle => :post }
+
+  map.resources :clientes, :member => { :toggle => :post }
+  map.resources :clientes, :member => { :destroy => :post}
+  
   map.resource :user_session
 
   map.resources :password_resets

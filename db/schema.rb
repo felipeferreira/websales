@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090914141258) do
+ActiveRecord::Schema.define(:version => 20100916201935) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -35,6 +35,29 @@ ActiveRecord::Schema.define(:version => 20090914141258) do
 
   add_index "attachments", ["ticket_id"], :name => "index_attachments_on_ticket_id"
   add_index "attachments", ["user_id"], :name => "index_attachments_on_user_id"
+
+  create_table "clientes", :force => true do |t|
+    t.string   "nomefantasia", :null => false
+    t.string   "razaosocial"
+    t.string   "cnpj"
+    t.string   "ie"
+    t.string   "im"
+    t.string   "endereco"
+    t.string   "bairro"
+    t.string   "cidade"
+    t.string   "uf"
+    t.string   "contato"
+    t.string   "telefone"
+    t.string   "celular"
+    t.string   "email"
+    t.string   "status"
+    t.integer  "user_id",      :null => false
+    t.text     "obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clientes", ["user_id"], :name => "index_clientes_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.text     "comment",    :null => false
@@ -65,9 +88,31 @@ ActiveRecord::Schema.define(:version => 20090914141258) do
     t.datetime "disabled_at"
   end
 
+  create_table "items", :force => true do |t|
+    t.integer "pedido_id",  :null => false
+    t.integer "produto_id", :null => false
+    t.integer "quantidade"
+  end
+
+  create_table "pedidos", :force => true do |t|
+    t.text     "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "priorities", :force => true do |t|
     t.string   "name",        :null => false
     t.datetime "disabled_at"
+  end
+
+  create_table "produtos", :force => true do |t|
+    t.string   "codigo"
+    t.string   "titulo"
+    t.string   "descricao"
+    t.decimal  "preco"
+    t.string   "imagem_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "statuses", :force => true do |t|
@@ -81,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20090914141258) do
     t.integer  "group_id",                      :null => false
     t.integer  "status_id",                     :null => false
     t.integer  "priority_id",                   :null => false
-    t.integer  "contact_id",                    :null => false
+    t.integer  "cliente_id",                    :null => false
     t.integer  "created_by",                    :null => false
     t.integer  "owned_by"
     t.datetime "closed_at"
@@ -90,7 +135,7 @@ ActiveRecord::Schema.define(:version => 20090914141258) do
     t.datetime "updated_at"
   end
 
-  add_index "tickets", ["contact_id"], :name => "index_tickets_on_contact_id"
+  add_index "tickets", ["cliente_id"], :name => "index_tickets_on_cliente_id"
   add_index "tickets", ["created_by"], :name => "index_tickets_on_created_by"
   add_index "tickets", ["group_id"], :name => "index_tickets_on_group_id"
   add_index "tickets", ["owned_by"], :name => "index_tickets_on_owned_by"

@@ -89,7 +89,9 @@ label:hover { cursor: pointer; }
 #login-content dt label:after, #wide-content dt label:after { content: ":"; }
 
 form { margin: 0 0 5px 0; }
-.textfield, .textarea, .selectbox, #jumpbox .textfield { padding: 4px; background: #fff; border: 1px solid #ccc; font: 12px Verdana,sans-serif; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+#.textfield, .textarea, .selectbox, #jumpbox .textfield {text-transform: uppercase; padding: 4px;background: #fff; border: 1px solid #ccc; font: 12px Verdana,sans-serif; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+.textfield, .textarea, .selectbox, #jumpbox .textfield { text-transform: uppercase;padding: 4px;background: #fff; border: 1px solid #ccc; font: 12px Verdana,sans-serif; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+label {text-align:right;margin-right:0.5em;display:block; }
 .textfield:hover, .textarea:hover, .selectbox:hover { border: 1px solid #999; }
 .textfield:focus, .textarea:focus, .selectbox:focus { border: 1px solid #4d88cf; }
 .textarea { width: 440px; overflow: auto; }
@@ -168,6 +170,7 @@ form a:hover { color: #90af4c; }
 #controls a:hover { color: #90af4c; }
 #controls a { padding: 3px 0 3px 20px; position: relative; line-height: 16px; }
 #controls .edit-ticket { background: transparent url('../images/edit-ticket.png') no-repeat 0 1px; }
+#controls .edit-cliente { background: transparent url('../images/edit-ticket.png') no-repeat 0 1px; }
 #controls .pdf { background: transparent url('../images/document-pdf.png') no-repeat 0 1px; }
 #controls .edit-user { background: transparent url('../images/edit-user.png') no-repeat 0 1px; }
 #controls .edit-contact { background: transparent url('../images/edit-contact.png') no-repeat 0 1px; }
@@ -176,6 +179,7 @@ form a:hover { color: #90af4c; }
 #controls .add-alert { background: transparent url('../images/add-alert.png') no-repeat 0 1px; }
 #controls .delete-alert { background: transparent url('../images/delete-alert.png') no-repeat 0 1px; }
 #controls .delete { background: transparent url('../images/delete.png') no-repeat 0 1px; }
+#controls .delete-cliente { background: transparent url('../images/delete.png') no-repeat 0 1px; }
 #controls .disable { background: transparent url('../images/disable.png') no-repeat 0 1px; }
 #controls .enable { background: transparent url('../images/accept.png') no-repeat 0 1px; }
 #controls .unlock { background: transparent url('../images/unlock.png') no-repeat 0 1px; }

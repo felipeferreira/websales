@@ -23,22 +23,23 @@ class TicketsController < ApplicationController
         end_date = Date.strptime(params[:search][:created_at_lt],"%Y-%m-%d")
         @search.created_at_lt = end_date
         end_date = end_date.next.midnight.gmtime
-        params[:search][:created_at_lt] = end_date.midnight
       end
       @tickets = Ticket.search(params[:search]).paginate(
         :page => params[:page],
-        :include => [:creator, :owner, :group, :status, :priority, :contact],
+        :include => [:creator, :owner, :group, :status, :priority, :cliente],
         :order => 'updated_at DESC',
         :per_page => @tickets_per_page)
     else
-      @tickets = Ticket.not_closed.paginate(
+     # @tickets = Ticket.not_closed.paginate(
+     # @tickets = Ticket.recently_assigned_to.paginate(        
+      @tickets = Ticket.mytickets(@current_user.id).paginate(
         :page => params[:page],
-        :include => [:creator, :owner, :group, :status, :priority, :contact],
+        :include => [:creator, :owner, :group, :status, :priority, :cliente],
         :order => 'updated_at DESC',
         :per_page => @tickets_per_page)
-    end
+   end
 
-    @total_tickets = @tickets.total_entries
+   # @total_tickets = @tickets.total_entries
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,6 +47,7 @@ class TicketsController < ApplicationController
       format.xml  { render :xml => @tickets }
     end
   end
+
 
   def show
     begin
@@ -55,7 +57,7 @@ class TicketsController < ApplicationController
       flash[:error] = "You have requested an invalid ticket!"
       redirect_to tickets_path and return
     end
-
+  
     respond_to do |format|
       format.html # show.html.erb
       format.pdf { render :layout => false }
@@ -132,7 +134,7 @@ class TicketsController < ApplicationController
       redirect_to tickets_path and return
     end
   end
-
+ 
   def set_current_tab
     @current_tab = :tickets
   end

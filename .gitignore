@@ -3,6 +3,9 @@ tmp/**/*
 doc/api
 doc/app
 db/*.sqlite3
+vendor
+vendors
+test
 attachments
 config/database.yml
 *.swp
