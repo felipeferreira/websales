@@ -1,0 +1,59 @@
+<%= error_messages_for :cliente -%>
+
+<%form_for (@cliente),:html=>{:multipart=>true} do |f| -%>
+<dl>
+<% if @current_user.admin? -%>
+<dt><label for="cliente_responsavel">Responsavel</label></dt>
+<dd>
+<% @users = User.find(:all)%>
+<%= f.select :user_id,@users.map {|u| [u.first_name,u.id]}  -%>
+
+</dd>
+<% end -%>
+
+<dt><label for="cliente_nomefantasia">Nome Fantasia</label></dt>
+<dd><%= text_field :cliente, :nomefantasia, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_razaosocial">Razao Social</label></dt>
+<dd><%= text_field :cliente, :razaosocial, :class => 'textfield',:size=>80 -%></dd>
+
+
+<dt><label for="cliente_cnpj">Cnpj</label></dt>
+<dd><%= text_field :cliente, :cnpj, :class => 'textfield',:size=>80 -%></dd>
+
+
+<dt><label for="cliente_im">I.M</label></dt>
+<dd><%= text_field :cliente, :im, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_ie">I.E</label></dt>
+<dd><%= text_field :cliente, :ie, :class => 'textfield',:size=>80 -%></dd>
+
+
+<dt><label for="cliente_endereco">Endereco</label></dt>
+<dd><%= text_field :cliente, :endereco, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_bairro">Bairro</label></dt>
+<dd><%= text_field :cliente, :bairro, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_cidade">Cidade</label></dt>
+<dd><%= text_field :cliente, :cidade, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_uf">UF</label></dt>
+<dd><%= text_field :cliente, :uf, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_contato">Contato</label></dt>
+<dd><%= text_field :cliente, :contato, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_telefone">Telefone</label></dt>
+<dd><%= text_field :cliente, :telefone, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_celular">Celular</label></dt>
+<dd><%= text_field :cliente, :celular, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_email">Email</label></dt>
+<dd><%= text_field :cliente, :email, :class => 'textfield',:size=>80 -%></dd>
+
+<dd><%= f.submit button_name, :class => "button" -%>&nbsp;&nbsp;<%= link_to 'Cancel', @ticket -%></dd>
+
+</dl>
+<%end-%>

@@ -1,0 +1,30 @@
+                 List of relations
+ Schema |        Name        |   Type   |  Owner   
+--------+--------------------+----------+----------
+ public | alerts             | table    | postgres
+ public | alerts_id_seq      | sequence | postgres
+ public | attachments        | table    | postgres
+ public | attachments_id_seq | sequence | postgres
+ public | clientes           | table    | postgres
+ public | clientes_id_seq    | sequence | postgres
+ public | comments           | table    | postgres
+ public | comments_id_seq    | sequence | postgres
+ public | contacts           | table    | postgres
+ public | contacts_id_seq    | sequence | postgres
+ public | groups             | table    | postgres
+ public | groups_id_seq      | sequence | postgres
+ public | pedidos            | table    | postgres
+ public | pedidos_id_seq     | sequence | postgres
+ public | priorities         | table    | postgres
+ public | priorities_id_seq  | sequence | postgres
+ public | produtos           | table    | postgres
+ public | produtos_id_seq    | sequence | postgres
+ public | schema_migrations  | table    | postgres
+ public | statuses           | table    | postgres
+ public | statuses_id_seq    | sequence | postgres
+ public | tickets            | table    | postgres
+ public | tickets_id_seq     | sequence | postgres
+ public | users              | table    | postgres
+ public | users_id_seq       | sequence | postgres
+(25 rows)
+

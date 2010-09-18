@@ -1,0 +1,19 @@
+<%content_for :head do -%> 
+<%= javascript_include_tag 'pagination' %>
+<% end -%>
+
+<% content_for :button_list do -%>
+ <div class="right-container">  
+  <%= button_to 'Adicionar Produto', new_produto_path, :method => :get, :class => "green button" %>  
+</div><% end -%>
+
+
+<h1>Produtos</h1>
+
+<%= render :partial => 'alphabet' -%>
+
+<div id="produtos">
+  <%= render 'produtos' -%>
+</div>
+
+

@@ -1,0 +1,21 @@
+<table class="listing" cellspacing="0">
+  <tr class="header">
+    <th>NomeFantasia</th>
+    <th>Responsavel</th>
+    <th>Email</th>
+    <th>Telefone</th>
+  </tr>
+  <% @clientes.each do |cliente| -%>
+  <tr class="<%= cycle("list-line-odd", "list-line-even") -%>">
+    <td><%= link_to h(cliente.nomefantasia), cliente -%></td>
+    <td><%= cliente.user.first_name-%></td>
+    <td><%=h cliente.email -%></td>
+    <td><%=cliente.telefone -%></td>
+  </tr>
+  <% end -%>
+</table>
+
+<%= will_paginate @clientes, :previous_label => '&#8249;', :next_label => '&#8250;' %>
+<% if @total_clientes -%>
+  <div style="margin: 6px 0; font-style: italic; color: #333; text-align:center;"><%=@total_clientes %> <%= @total_clientes == 1 ? "cliente" : "cliente" %> encontrados.</div>
+<% end -%>

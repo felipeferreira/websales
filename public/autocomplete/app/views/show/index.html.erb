@@ -1,0 +1,26 @@
+<h1>Prototype UI autocomplete (Ajax)</h1> 
+<h2>Using Ruby on Rails -II</h2>
+<div>
+<label><b>User</b></label>
+<p>
+<%= text_field 'user','id'%>
+</p>
+<script  type="text/javascript">
+    Event.observe(window, "load", function() {
+      pui = new UI.AutoComplete('user_id', { infoMessage:     "Type a user name",  
+                                              noMatchMessage:  "Nothing found",
+                                              shadow: "auto_complete",
+											                                             });
+      pui.setAutocompleteList(<%=@users%>);
+    });
+</script>
+</div>
+<div style="margin-top:50px;">
+<label><b>Add a new box</b></label>
+<p>
+   <%= text_field 'name','id' %>
+ <!--    <a href="#" onclick="add()">Adds</a>-->
+   <%=link_to 'Add' ,{},:onclick=>"add()",:href=>'#'%>
+  
+</p>
+</div>

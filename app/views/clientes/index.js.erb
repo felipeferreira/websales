@@ -1,0 +1,2 @@
+<%= @clientes.collect(&:nomefantasia).join("\n") %>
+$("#clientes").html("<%= escape_javascript(render("clientes")) %>");

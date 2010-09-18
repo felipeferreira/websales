@@ -1,0 +1,5 @@
+<h2>Novo Cliente</h2>
+
+    <%= render :partial => 'form',:locals=>{:cliente=>@cliente,:button_name => 'Create' } -%>
+
+<%= link_to 'Back', clientes_path %>

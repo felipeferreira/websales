@@ -1,0 +1,57 @@
+<%= error_messages_for :cliente -%>
+
+<%form_for (@cliente),:html=>{:multipart=>true} do |f| -%>
+<dl>
+<% if @current_user.admin? -%>
+<dt><label for="cliente_user_id">Responsavel</label></dt>
+<dd>
+<%= @users = User.find(:all)
+ f.select(:first_name,@usersme)%>
+
+</dd>
+<% end -%>
+
+<dt><label for="cliente_nomefantasia">Nome Fantasia</label></dt>
+<dd><%= text_field :cliente, :nomefantasia, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_razaosocial">Razao Social</label></dt>
+<dd><%= text_field :cliente, :razaosocial, :class => 'textfield',:size=>80 -%></dd>
+
+
+<dt><label for="cliente_cnpj">Cnpj</label></dt>
+<dd><%= text_field :cliente, :cnpj, :class => 'textfield',:size=>80 -%></dd>
+
+
+<dt><label for="cliente_im">I.M</label></dt>
+<dd><%= text_field :cliente, :im, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_ie">I.E</label></dt>
+<dd><%= text_field :cliente, :ie, :class => 'textfield',:size=>80 -%></dd>
+
+
+<dt><label for="cliente_endereco">Endereco</label></dt>
+<dd><%= text_field :cliente, :endereco, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_bairro">Bairro</label></dt>
+<dd><%= text_field :cliente, :bairro, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_cidade">Cidade</label></dt>
+<dd><%= text_field :cliente, :cidade, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_uf">UF</label></dt>
+<dd><%= text_field :cliente, :uf, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_contato">Contato</label></dt>
+<dd><%= text_field :cliente, :contato, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_telefone">Telefone</label></dt>
+<dd><%= text_field :cliente, :telefone, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_celular">Celular</label></dt>
+<dd><%= text_field :cliente, :celular, :class => 'textfield',:size=>80 -%></dd>
+
+<dt><label for="cliente_email">Email</label></dt>
+<dd><%= text_field :cliente, :email, :class => 'textfield',:size=>80 -%></dd>
+
+</dl>
+<%end-%>

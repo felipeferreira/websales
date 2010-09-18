@@ -1,0 +1,41 @@
+<div class="right" id="controls">  
+ <%= link_to 'Edit', edit_produto_path, :class => "edit-produto", :title => 'Edit Produto' -%> |  
+ <% if @current_user.admin? -%>    
+   <% unless @produto.enabled? -%>      
+     <%= link_to 'Enable', toggle_produto_path, :confirm => "Really enable Produto #{@produto.titulo}?", :method => :post, :class => 'enable', :title => 'Enable Produto' -%> |    
+  <% else -%>      
+     <%= link_to 'Disable', toggle_produto_path, :confirm => "Really disable Produto #{@produto.titulo}?", :method => :post, :class => 'disable', :title => 'Disable produto' -%> |    
+  <% end -%>  
+ <% end -%>  
+
+<%= link_to 'Back', :back, :class => 'back', :title => 'Go back' -%>
+</div>
+<h2<%= @produto.enabled? ? '' : ' class="disabled"' -%>>
+<%=h @produto.titulo -%></h2>
+<table class="profile <%= @produto.enabled? ? '' : 'disabled' -%>">  
+ <tr>    
+   <td class="field">Codigo:</td>
+   <td class="value"><%=h @produto.codigo -%></td>    
+   <td class="field">Titulo:</td>
+   <td class="value"><%=h @produto.titulo -%></td>  
+ </tr>  
+ <tr>    
+   <td class="field">Descricao:</td><td class="value">
+   <%=h @produto.descricao -%></td>    
+   <td class="field">Preco:</td>
+   <td class="value"><%=h @produto.preco -%>
+   </td>  
+ </tr>  
+ <tr>    
+   <td class="field">Imagem Path:</td>
+   <td class="value"><%= h @produto.imagem_url -%></td>
+   <td class="field"></td>
+   <td class="value"></td>  
+ </tr>  
+ <tr>    
+   <td class="field">Updated at:</td>    
+   <td class="value" colspan="3"><%= nice_date @produto.updated_at -%>
+   </td>  
+ </tr>  
+</table>
+

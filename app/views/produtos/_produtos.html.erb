@@ -1,0 +1,26 @@
+<table class='listing' cellspacing='0'>
+  <tr class='header'>
+    <th>Codigo</th>
+    <th>Titulo</th>
+    <th>Preco</th>
+    <th>Imagem url</th>
+  </tr>
+
+<% @produtos.each do |produto| %>
+  <tr>
+    <td><%=h produto.codigo %></td>
+    <td><%=h produto.titulo %></td>
+    <td><%=h produto.preco %></td>
+    <td><%=h produto.imagem_url %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @produtos, :previous_label => '&#8249;', :next_label => '&#8250;' %>
+<% if @total_produtos -%>  
+<div style="margin: 6px 0; font-style: italic; color: #333; text-align:center;">
+<%=@total_produtos %> 
+<%= @total_produtos == 1 ? "produto" : "produtos" %> encontrados.
+</div>
+<% end -%>
+

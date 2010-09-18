@@ -1,0 +1,12 @@
+<h1>Editing produto</h1>
+
+<% form_for(@produto) do |f| %>
+  <%= f.error_messages %>
+  <dl>
+    <%= render :partial => 'form' -%>
+    <dd><%= f.submit 'Update',:class=>'button'- %>&nbsp;&nbsp;<%= link_to 'Cancelar', @produto%></dd>
+  </dl>
+<% end %>
+
+<%= link_to 'Show', @produto %> |
+<%= link_to 'Back', produtos_path %>

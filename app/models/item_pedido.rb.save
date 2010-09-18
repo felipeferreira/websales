@@ -1,0 +1,13 @@
+class ItemPedido < ActiveRecord::Base
+belongs_to :produto
+belongs_to :pedido
+
+validates_presence_of :pedido,:produto,:quantidade
+
+def preco
+ produto.preco * quantidade
+end
+
+
+
+end

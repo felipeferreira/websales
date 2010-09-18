@@ -1,0 +1,43 @@
+<div class="right" id="controls">
+  <%= link_to 'Edit', edit_cliente_path, :class => "edit-cliente", :title => 'Editar' -%> |
+  <%=link_to 'Excluir',@cliente,:confirm=>"Tem certeza que deseja excluir o registro?",:class=>'delete',:method=>'delete' -%> |
+
+  <% if @current_user.admin? -%>
+    <% unless @cliente.enabled? -%>
+      <%= link_to 'Enable', toggle_cliente_path, :confirm => "Deseja Realmente Ativar o cliente #{@cliente.nomefantasia}?", :method => :post, :class => 'enable', :title => 'Ativar Cliente' -%> |
+    <% else -%>
+      <%= link_to 'Disable', toggle_cliente_path, :confirm => "Desativar Realmente o cliente #{@cliente.nomefantasia}?", :method => :post, :class => 'disable', :title => 'Desativar cliente' -%> |
+    <% end -%>
+  <% end -%>
+  <%= link_to 'Back', :back, :class => 'back', :title => 'Go back' -%>
+</div>
+
+<h2<%= @cliente.enabled? ? '' : ' class="disabled"' -%>><%=h @cliente.nomefantasia -%></h2>
+
+<table class="profile <%= @cliente.enabled? ? '' : 'disabled' -%>">
+  <tr>
+    <td class="field">Nome Fantasia:</td><td class="value"><%=h @cliente.nomefantasia -%></td>
+    <td class="field">Razao Social:</td><td class="value"><%=h @cliente.razaosocial -%></td>
+  </tr>
+  <tr>
+    <td class="field">CNPJ:</td><td class="value"><%=h @cliente.cnpj -%></td>
+    <td class="field">I.E:</td><td class="value"><%=h @cliente.ie -%></td>
+  </tr>
+  <tr>
+    <td class="field">Endereco:</td><td class="value"><%=h @cliente.endereco -%></td>
+    <td class="field">Bairro:</td><td class="value"><%=h @cliente.bairro -%></td>
+  </tr>
+  <tr>
+    <td class="field">Cidade:</td><td class="value"><%=h @cliente.cidade -%></td>
+    <td class="field">UF:</td><td class="value"><%=h @cliente.uf -%></td>
+  </tr>
+  <tr>
+    <td class="field">Email:</td><td class="value"><%=h @cliente.email -%></td>
+    <td class="field">Telefone:</td><td class="value"><%=h @cliente.telefone -%></td>
+  </tr>
+
+  <tr>
+    <td class="field">Email:</td><td class="value"><%=h @cliente.email -%></td>
+    <td class="field">Endereco:</td><td class="value"><%=h @cliente.endereco -%></td>
+  </tr>
+</table>
